@@ -50,6 +50,6 @@ public:
     byte readRegister(byte registerAddress);
     
     //Read Numbers of Register ADS1299
-    void readRegister(byte registerAddress, byte numberRegister, byte *Data);
+    void readRegister(byte registerAddress, byte numberRegister, byte *data);
 };
 #endif
