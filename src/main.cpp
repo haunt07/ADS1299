@@ -9,9 +9,12 @@ void setup()
   //SPI Initialitation
   SPI.begin();
 
-  // ADS Initialitation
+  //ADS Initialitation
   ads.begin(); //Default ss pin
   // ads.begin(22); //Custom ss pin
+  
+  //Reset ADS
+  ads.reset();
 
   //Serial Initialitation
   Serial.begin(115200);

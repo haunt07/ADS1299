@@ -30,12 +30,12 @@ void ADS1299::readRegister(byte registerAddress, byte numberRegister, byte *data
         data[iter] = SPI.transfer(0);
     }
     digitalWrite(pin.SS, HIGH);
+    SPI.endTransaction();
 
     //Get Info Command
     infoCommand.command = ADS1299_RREG;
     infoCommand.registerAddress = registerAddress;
     infoCommand.totalRegister = numberRegister;
-    SPI.endTransaction();
 }
 
 void ADS1299::begin()
@@ -51,4 +51,12 @@ void ADS1299::begin(byte pinSS)
 byte ADS1299::getID()
 {
     return readRegister(IDREG);
+}
+
+void ADS1299::reset(){
+    SPI.beginTransaction(SPISettings(ADS1299_SPICLOCK, ADS1299_SPIBITORDER, ADS1299_SPIDATAMODE));
+    digitalWrite(pin.SS, LOW);
+    SPI.transfer(RESETREG);
+    digitalWrite(pin.SS, HIGH);
+    SPI.endTransaction();
 }

@@ -6,7 +6,7 @@
 //SPI Configuration
 #define ADS1299_SPICLOCK (1000000u)
 #define ADS1299_SPIBITORDER MSBFIRST
-#define ADS1299_SPIDATAMODE SPI_MODE0
+#define ADS1299_SPIDATAMODE SPI_MODE1
 
 //Command mode ADS1299
 #define ADS1299_RREG 0x20
@@ -23,7 +23,8 @@ private:
     //Register Address ADS1299
     enum Register_Address : byte
     {
-        IDREG = 0x00
+        IDREG = 0x00,       //Register ID
+        RESETREG = 0x06     //Register Reset
     };
 
 public:
@@ -39,6 +40,9 @@ public:
     void begin(); //Using default Pin ss
     void begin(byte pinSS); //Using Custom Pin ss
     
+    //Reset ADS1299
+    void reset();
+
     //Get ID ADS1299
     byte getID();
     
