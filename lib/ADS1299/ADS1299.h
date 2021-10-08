@@ -9,8 +9,7 @@
 #define ADS1299_SPIDATAMODE SPI_MODE0
 
 //Command mode ADS1299
-// #define ADS1299_RREG 0x20
-#define ADS1299_RREG 0x80
+#define ADS1299_RREG 0x20
 
 class ADS1299
 {
@@ -24,8 +23,7 @@ private:
     //Register Address ADS1299
     enum Register_Address : byte
     {
-        // IDREG = 0x00
-        IDREG = 0x37 << 1
+        IDREG = 0x00
     };
 
 public:

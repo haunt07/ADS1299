@@ -39,7 +39,7 @@ void setup()
   Serial.println("\n");
 
   //Program mengambil 1 data register
-  byte addressRegisterUji = 0x37 << 1;
+  byte addressRegisterUji = 0x00;
   Serial.println("Program mengambil 1 data register");
   res = ads.readRegister(addressRegisterUji);
   infoCommand = ads.infoCommand.command;
@@ -56,7 +56,7 @@ void setup()
   Serial.println("\n");
 
   //Program mengambil multiple data register
-  addressRegisterUji = 0x37 << 1;
+  addressRegisterUji = 0x00;
   Serial.println("Program mengambil multiple data register");
   ads.readRegister(addressRegisterUji, 2, resData);
   infoCommand = ads.infoCommand.command;

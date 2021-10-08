@@ -6,7 +6,7 @@ byte ADS1299::readRegister(byte registerAddress)
     SPI.beginTransaction(SPISettings(ADS1299_SPICLOCK, ADS1299_SPIBITORDER, ADS1299_SPIDATAMODE));
     digitalWrite(pin.SS, LOW);
     SPI.transfer(registerAddress | ADS1299_RREG);
-    // SPI.transfer(0x00);
+    SPI.transfer(0x00);
     byte dat = SPI.transfer(0);
     digitalWrite(pin.SS, HIGH);
     SPI.endTransaction();
@@ -24,7 +24,7 @@ void ADS1299::readRegister(byte registerAddress, byte numberRegister, byte *data
     SPI.beginTransaction(SPISettings(ADS1299_SPICLOCK, ADS1299_SPIBITORDER, ADS1299_SPIDATAMODE));
     digitalWrite(pin.SS, LOW);
     SPI.transfer(registerAddress | ADS1299_RREG);
-    // SPI.transfer(numberRegister - 1);
+    SPI.transfer(numberRegister - 1);
     for (int iter = 0; iter < numberRegister; iter++)
     {
         data[iter] = SPI.transfer(0);
