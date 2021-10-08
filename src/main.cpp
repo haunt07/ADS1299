@@ -15,7 +15,8 @@ void setup()
   
   //Reset ADS
   ads.reset();
-
+  delay(100);
+  
   //Serial Initialitation
   Serial.begin(115200);
 
